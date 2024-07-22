@@ -1,0 +1,511 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>MyQA</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2>MyLocalQA</h2>-->
+<!--<form method="post" >-->
+<!--    <label for="question">please input your questions:</label> <br/>-->
+<!--    <input type="text" id="question" name="question" /> <br/>-->
+<!--    <input type="submit" value="submit" /> <br/>-->
+<!--</form>-->
+<!--    {% if result is defined %}-->
+<!--        <h2>Answer</h2>-->
+<!--    <p>{{ result.result}}</p>-->
+<!--    {% endif %}-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>MyQA</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background-color: #f2f2f2;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--        }-->
+<!--        .container {-->
+<!--            background-color: #fff;-->
+<!--            padding: 20px 40px;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--        h2 {-->
+<!--            color: #333;-->
+<!--        }-->
+<!--        form {-->
+<!--            margin: 20px 0;-->
+<!--        }-->
+<!--        label {-->
+<!--            display: block;-->
+<!--            margin-bottom: 10px;-->
+<!--            color: #666;-->
+<!--        }-->
+<!--        input[type="text"] {-->
+<!--            width: 80%;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 20px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 4px;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+<!--        input[type="submit"] {-->
+<!--            background-color: #007bff;-->
+<!--            color: white;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+<!--        input[type="submit"]:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
+<!--        .answer {-->
+<!--            background-color: #f9f9f9;-->
+<!--            padding: 15px;-->
+<!--            border-radius: 4px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>MyLocalQA</h2>-->
+<!--    <form method="post">-->
+<!--        <label for="question">请输入你的问题:</label>-->
+<!--        <input type="text" id="question" name="question" required />-->
+<!--        <input type="submit" value="提问" />-->
+<!--    </form>-->
+<!--    {% if result is defined %}-->
+<!--    <div class="answer">-->
+<!--        <h2>回答</h2>-->
+<!--        <p>{{ result }}</p>-->
+<!--    </div>-->
+<!--    {% endif %}-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>MyQA</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background-color: #f2f2f2;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--        }-->
+<!--        .container {-->
+<!--            background-color: #fff;-->
+<!--            padding: 20px 40px;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--            text-align: center;-->
+<!--            width: 60%;-->
+<!--        }-->
+<!--        h2 {-->
+<!--            color: #333;-->
+<!--        }-->
+<!--        form {-->
+<!--            margin: 20px 0;-->
+<!--        }-->
+<!--        label {-->
+<!--            display: block;-->
+<!--            margin-bottom: 10px;-->
+<!--            color: #666;-->
+<!--        }-->
+<!--        input[type="text"] {-->
+<!--            width: 80%;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 20px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 4px;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+<!--        input[type="submit"] {-->
+<!--            background-color: #007bff;-->
+<!--            color: white;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+<!--        input[type="submit"]:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
+<!--        .answer {-->
+<!--            background-color: #f9f9f9;-->
+<!--            padding: 15px;-->
+<!--            border-radius: 4px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            margin-top: 20px;-->
+<!--            text-align: left;-->
+<!--        }-->
+<!--        .message {-->
+<!--            margin-bottom: 10px;-->
+<!--            padding: 10px;-->
+<!--            border-radius: 4px;-->
+<!--        }-->
+<!--        .user {-->
+<!--            background-color: #e0f7fa;-->
+<!--            text-align: right;-->
+<!--        }-->
+<!--        .assistant {-->
+<!--            background-color: #e8f5e9;-->
+<!--            text-align: left;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>MyLocalQA</h2>-->
+<!--    <form id="qaForm">-->
+<!--        <label for="question">请输入你的问题:</label>-->
+<!--        <input type="text" id="question" name="question" required />-->
+<!--        <input type="submit" value="提问" />-->
+<!--    </form>-->
+<!--    <div id="chatHistory">-->
+<!--        {% for message in history %}-->
+<!--            <div class="message {{ message.role }}">-->
+<!--                <p>{{ message.content }}</p>-->
+<!--            </div>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--$(document).ready(function() {-->
+<!--    $('#qaForm').submit(function(event) {-->
+<!--        event.preventDefault();-->
+<!--        $.ajax({-->
+<!--            type: 'POST',-->
+<!--            url: '/',-->
+<!--            data: $(this).serialize(),-->
+<!--            success: function(response) {-->
+<!--                // Append new messages to the chat history-->
+<!--                var chatHistory = $('#chatHistory');-->
+<!--                chatHistory.html($(response).find('#chatHistory').html());-->
+<!--                $('#question').val('');-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--});-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>MyQA</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background-color: #f2f2f2;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--        }-->
+<!--        .container {-->
+<!--            background-color: #fff;-->
+<!--            padding: 20px;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--            width: 80%;-->
+<!--            display: flex;-->
+<!--            height: 80vh;-->
+<!--        }-->
+<!--        .history {-->
+<!--            width: 50%;-->
+<!--            padding: 10px;-->
+<!--            border-right: 1px solid #ddd;-->
+<!--            overflow-y: auto;-->
+<!--            height: 100%;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+<!--        .input-area {-->
+<!--            width: 50%;-->
+<!--            padding: 10px;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+<!--        h2 {-->
+<!--            color: #333;-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--        form {-->
+<!--            margin: 0;-->
+<!--        }-->
+<!--        label {-->
+<!--            display: block;-->
+<!--            margin-bottom: 10px;-->
+<!--            color: #666;-->
+<!--        }-->
+<!--        input[type="text"] {-->
+<!--            width: calc(100% - 22px);-->
+<!--            padding: 10px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 4px;-->
+<!--            font-size: 16px;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+<!--        input[type="submit"] {-->
+<!--            background-color: #007bff;-->
+<!--            color: white;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 16px;-->
+<!--            margin-top: 10px;-->
+<!--        }-->
+<!--        input[type="submit"]:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
+<!--        .message {-->
+<!--            margin-bottom: 10px;-->
+<!--            padding: 10px;-->
+<!--            border-radius: 4px;-->
+<!--            max-width: 80%;-->
+<!--            box-sizing: border-box;-->
+<!--            word-wrap: break-word;-->
+<!--        }-->
+<!--        .user {-->
+<!--            background-color: #e0f7fa;-->
+<!--            text-align: right;-->
+<!--            margin-left: auto;-->
+<!--        }-->
+<!--        .assistant {-->
+<!--            background-color: #e8f5e9;-->
+<!--            text-align: left;-->
+<!--            margin-right: auto;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div class="history">-->
+<!--        <h2>历史记录</h2>-->
+<!--        <div id="chatHistory">-->
+<!--            {% for message in history %}-->
+<!--                <div class="message {{ message.role }}">-->
+<!--                    <p>{{ message.content }}</p>-->
+<!--                </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="input-area">-->
+<!--        <h2>提问</h2>-->
+<!--        <form id="qaForm">-->
+<!--            <label for="question">请输入你的问题:</label>-->
+<!--            <input type="text" id="question" name="question" required />-->
+<!--            <input type="submit" value="提问" />-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--$(document).ready(function() {-->
+<!--    $('#qaForm').submit(function(event) {-->
+<!--        event.preventDefault();-->
+<!--        $.ajax({-->
+<!--            type: 'POST',-->
+<!--            url: '/',-->
+<!--            data: $(this).serialize(),-->
+<!--            success: function(response) {-->
+<!--                // Append new messages to the chat history-->
+<!--                var chatHistory = $('#chatHistory');-->
+<!--                chatHistory.html($(response).find('#chatHistory').html());-->
+<!--                $('#question').val('');-->
+<!--                chatHistory.scrollTop(chatHistory[0].scrollHeight); // Auto-scroll to the bottom-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--});-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyQA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .history {
+            flex-grow: 1;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            overflow-y: auto;
+        }
+        .input-area {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        label {
+            display: none;
+        }
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            max-width: 80%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+        }
+        .user {
+            background-color: #e0f7fa;
+            text-align: right;
+            margin-left: auto;
+        }
+        .assistant {
+            background-color: #e8f5e9;
+            text-align: left;
+            margin-right: auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="history">
+        <h2>历史记录</h2>
+        <div id="chatHistory">
+            {% for message in history %}
+                <div class="message {{ message.role }}">
+                    <p>{{ message.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="input-area">
+        <form id="qaForm">
+            <input type="text" id="question" name="question" placeholder="请输入你的问题..." required />
+            <input type="submit" value="提问" />
+        </form>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#qaForm').submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/',
+            data: $(this).serialize(),
+            success: function(response) {
+                // Append new messages to the chat history
+                var chatHistory = $('#chatHistory');
+                chatHistory.html($(response).find('#chatHistory').html());
+                $('#question').val('');
+                chatHistory.scrollTop(chatHistory[0].scrollHeight); // Auto-scroll to the bottom
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
